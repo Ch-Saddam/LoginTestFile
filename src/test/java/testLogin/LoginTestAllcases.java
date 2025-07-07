@@ -25,14 +25,12 @@ public class LoginTestAllcases extends BaseTest {
     @Test(priority = 2,dataProvider = "emptyFieldsData", dataProviderClass = LoginDataProvider.class)
     public void testEmptyFieldValidation(String username, String password) {
         loginPage.login(username, password);
-
         if (username.trim().isEmpty())
             assertEquals(loginPage.getEmptyUsernameErrorText(), "Required");
 
         if (password.trim().isEmpty())
             assertEquals(loginPage.getEmptyPasswordErrorText(), "Required");
     }
-
     @Test(priority = 3,dataProvider = "invalidCredentials", dataProviderClass = LoginDataProvider.class)
     public void testInvalidCredentials(String username, String password) {
         loginPage.login(username, password);
